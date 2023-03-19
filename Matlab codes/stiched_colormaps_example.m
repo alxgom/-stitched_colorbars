@@ -14,9 +14,10 @@ x = linspace(-10,10,100);
 y = linspace(-10,10,100);
 [X,Y] = meshgrid(x,y);
 Z = abs(sin(X) + cos(Y)).*exp(-0.02.*(X.^2+Y.^2))+2.*exp(-0.04.*(X.^2+Y.^2))-1.2;
+
+f1=figure();
 s=surf(X,Y,Z);
 set(s, 'EdgeColor', 'None','LineWidth',1.,'FaceColor','interp');
-
 
 level=0; %choose the value for at which the colormaps get 'pasted'
 min_caxis=min(min(Z));%-3; %minimal colorbar value
@@ -25,18 +26,35 @@ max_caxis=max(max(Z));%2;%maximal colorbar value
 caxis([min_caxis max_caxis]);
 stich_point=100.*(level-min_caxis)./(max_caxis-min_caxis);
 
-
 cmap1=flipud(cmocean('deep')); %Lower colormap
-% cmap1=colormap('gray'); %Lower colormap
-% cmap2=colormap('jet'); %Upper colormap
 cmap2=elevation(); %Upper colormap
-
 cmap = stiched_colormap(cmap1, cmap2, stich_point); %function to paste the colormaps
 
 colormap(cmap);
 view(2)
-% add a colorbar
 colorbar
+
+
+f2=figure();
+s=surf(X,Y,Z);
+set(s, 'EdgeColor', 'None','LineWidth',1.,'FaceColor','interp');
+
+level=0; %choose the value for at which the colormaps get 'pasted'
+min_caxis=min(min(Z));%-3; %minimal colorbar value
+max_caxis=max(max(Z));%2;%maximal colorbar value
+
+caxis([min_caxis max_caxis]);
+stich_point=100.*(level-min_caxis)./(max_caxis-min_caxis);
+
+cmap1=colormap('gray'); %Lower colormap
+cmap2=colormap('jet'); %Upper colormap
+cmap = stiched_colormap(cmap1, cmap2, stich_point); %function to paste the colormaps
+
+colormap(cmap);
+view(2)
+colorbar
+
+
 
 
 %% Interpolation test to see if the colormap is well ineterpolated.
