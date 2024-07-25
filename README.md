@@ -1,4 +1,4 @@
-A simple Matlab function that allows to make a new colormap by stitching two colormaps. 
+A simple Matlab function "stiched_colormap.m" that allows to make a new colormap by stitching two colormaps. 
 
 This allows for some extra visutalization in some regions, or in case of topography, to have a different colormap above and below water. 
 
