@@ -6,7 +6,7 @@ clc
 % The cmocean colormap, the elvation function to get the upper 'topo'
 % colours and the functions to paste the colorbars are defined in this
 % path
-addpath(genpath(fullfile('colormaps')));
+addpath(genpath(fullfile('..', 'colormaps')));
 
 
 %Generate example function.
